@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>San Valentín 💖</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:#fdeff2;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: 'Arial', sans-serif;
+  overflow:hidden;
+}
+
+#container{
+  text-align:center;
+}
+
+h1{
+  color:#d6336c;
+}
+
+#heart{
+  font-size:100px;
+  animation: fall 2s forwards;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-300px);}
+  100%{transform:translateY(0);}
+}
+
+#tree{
+  display:none;
+  font-size:120px;
+}
+
+.eyes{
+  font-size:20px;
+}
+
+#text{
+  display:none;
+  margin-top:20px;
+  color:#333;
+}
+
+.counter{
+  font-weight:bold;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <h1>Eres mi lugar favorito en el mundo 🌍❤️</h1>
+
+  <div id="heart">❤️</div>
+
+  <div id="tree">
+    🌳
+    <div class="eyes">😍 😍</div>
+  </div>
+
+  <div id="text">
+    <p>¿Quieres ser mi San Valentín Brisa? ❤️</p>
+    <p>Mi amor por ti comenzó hace…</p>
+    <div class="counter" id="counter"></div>
+  </div>
+</div>
+
+<script>
+// Animación corazón -> árbol
+setTimeout(()=>{
+  document.getElementById("heart").style.display="none";
+  document.getElementById("tree").style.display="block";
+},2000);
+
+setTimeout(()=>{
+  document.getElementById("text").style.display="block";
+},3000);
+
+// CONTADOR DESDE 6 FEBRERO 2024
+const startDate = new Date("2024-02-06T00:00:00");
+
+function updateCounter(){
+  const now = new Date();
+  let diff = now - startDate;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  diff -= days * (1000*60*60*24);
+
+  const hours = Math.floor(diff / (1000*60*60));
+  diff -= hours * (1000*60*60);
+
+  const minutes = Math.floor(diff / (1000*60));
+  diff -= minutes * (1000*60);
+
+  const seconds = Math.floor(diff / 1000);
+
+  document.getElementById("counter").innerHTML =
+    `${days} días ${hours} horas ${minutes} minutos ${seconds} segundos`;
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
+</script>
+
+</body>
+</html>
